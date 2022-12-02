@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  annotations:
+    app.openshift.io/connects-to: server
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: 'https://github.com/gnunn-gitops/product-catalog-client'
+  labels:
+    app: client
+    app.kubernetes.io/name: client
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/instance: client
+    app.openshift.io/runtime: nodejs
+    app.kubernetes.io/part-of: product-catalog
+spec:
+  selector:
+    matchLabels:
+      name: client
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: client
+    spec:
+      containers:
+        - name: client
+          image: quay.io/gnunn/client:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+            name: http
+          # volumeMounts:
+          # - mountPath: /opt/app-root/src/config.js
+          #   name: config-data
+          #   subPath: config.js
+          resources:
+            requests:
+              memory: "50Mi"
+              cpu: "50m"
+            limits:
+              memory: "100Mi"
+          livenessProbe:
+            httpGet:
+              path: /health.html
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          readinessProbe:
+              httpGet:
+                path: /health.html
+                port: 8080
+                scheme: HTTP
+              timeoutSeconds: 1
+              periodSeconds: 10
+              successThreshold: 1
+              failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      # volumes:
+      # - configMap:
+      #     name: client
+      #   name: config-data

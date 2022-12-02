@@ -1,0 +1,4 @@
+resources:
+- components/database/base
+- components/client/base
+- components/server/base
