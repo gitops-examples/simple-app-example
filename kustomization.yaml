@@ -2,3 +2,9 @@ resources:
 - components/database/base
 - components/client/base
 - components/server/base
+
+replicas:
+- name: server
+  count: 2
+- name: client
+  count: 1
