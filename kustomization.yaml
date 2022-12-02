@@ -9,11 +9,11 @@ replicas:
 - name: client
   count: 1
 
-patches:
-- patch: |-
-    - op: replace
-      path: "/spec/template/spec/containers/0/resources/limits/memory"
-      value: 1Gi
-  target:
-    kind: Deployment
-    name: server
+# patches:
+# - patch: |-
+#     - op: replace
+#       path: "/spec/template/spec/containers/0/resources/limits/memory"
+#       value: 1Gi
+#   target:
+#     kind: Deployment
+#     name: server

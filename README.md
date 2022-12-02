@@ -20,6 +20,6 @@ Once the application is deployed, you can demo some basic GitOps principles:
 
 2. Self-Healing. Delete the client application in the OpenShift Console, note that Argo immediately recreates it
 
-3. In git increase the replica count for either the client or server application in kustomization.yaml
+3. In kustomization.yaml increase the replica count for either the client or server application in kustomization.yaml, push to git and refresh the app in Argo CD (or wait for 3 minute polling to kick-in). Show how the replica count has increased in the application
 
-4.
+4. In kustomization.yaml show how to increase resources by removing the comments around the patch and pushing it to git. Again refresh the app in Argo CD and in the OpenShift Console note how the pod was recreated with the new higher limit
