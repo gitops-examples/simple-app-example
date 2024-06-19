@@ -16,6 +16,7 @@ metadata:
     app.openshift.io/runtime: quarkus
     app.kubernetes.io/part-of: product-catalog
 spec:
+  fake: hello
   selector:
     matchLabels:
       name: server
