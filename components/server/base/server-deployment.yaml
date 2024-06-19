@@ -34,10 +34,6 @@ spec:
               value: "true"
             - name: QUARKUS_KUBERNETES_CONFIG_CONFIG_MAPS
               value: server
-            # - name: JAVA_OPTIONS
-            #   value: >-
-            #     -Dquarkus.kubernetes-config.enabled=true
-            #     -Dquarkus.kubernetes-config.config-maps=server
           image: quay.io/gnunn/server:latest
           imagePullPolicy: Always
           ports:
