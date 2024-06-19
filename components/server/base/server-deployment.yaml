@@ -7,7 +7,7 @@ metadata:
   annotations:
     app.openshift.io/connects-to: database
     app.openshift.io/vcs-ref: master
-    app.openshift.io/vcs-uri: 'https://github.com/gnunn-gitops/product-catalog-server'
+    app.openshift.io/vcs-uri: "https://github.com/gnunn-gitops/product-catalog-server"
   labels:
     app: server
     app.kubernetes.io/name: server
@@ -41,13 +41,13 @@ spec:
           image: quay.io/gnunn/server:latest
           imagePullPolicy: Always
           ports:
-          - containerPort: 8080
-            protocol: TCP
-            name: http
-          - containerPort: 8443
-            protocol: TCP
-          - containerPort: 8778
-            protocol: TCP
+            - containerPort: 8080
+              protocol: TCP
+              name: http
+            - containerPort: 8443
+              protocol: TCP
+            - containerPort: 8778
+              protocol: TCP
           resources:
             requests:
               memory: "250Mi"
@@ -61,13 +61,13 @@ spec:
             initialDelaySeconds: 3
             periodSeconds: 10
           readinessProbe:
-              httpGet:
-                path: /q/health/ready
-                port: 8080
-                scheme: HTTP
-              timeoutSeconds: 1
-              periodSeconds: 10
-              successThreshold: 1
-              failureThreshold: 3
+            httpGet:
+              path: /q/health/ready
+              port: 8080
+              scheme: HTTP
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File

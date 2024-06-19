@@ -7,9 +7,9 @@ generatorOptions:
     app.kubernetes.io/part-of: product-catalog
 
 configMapGenerator:
-- name: server
-  files:
-    - config/application.properties
+  - name: server
+    files:
+      - config/application.properties
 
 resources:
   - default-view-rolebinding.yaml

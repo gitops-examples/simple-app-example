@@ -11,8 +11,8 @@ metadata:
     quarkus-prometheus: "true"
 spec:
   ports:
-  - name: http
-    port: 8080
+    - name: http
+      port: 8080
   selector:
     name: server
   sessionAffinity: None
