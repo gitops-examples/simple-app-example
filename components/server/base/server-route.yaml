@@ -15,3 +15,6 @@ spec:
   to:
     kind: Service
     name: server
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
